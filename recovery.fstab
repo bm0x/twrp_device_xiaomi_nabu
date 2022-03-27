@@ -1,0 +1,19 @@
+# mount point       fstype    device                                                                flags
+/system             ext4      system                                                                flags=display="System";backup=1;logical;
+/system_image       emmc      system                                                                flags=display="System image";backup=1;flashimg=1;logical;
+/system_ext         ext4      system_ext                                                            flags=display="System_ext";backup=1;logical;
+/system_ext_image   emmc      system_ext                                                            flags=display="System_ext image";backup=1;flashimg=1;logical;
+/product            ext4      product                                                               flags=display="Product";backup=1;logical;
+/product_image      emmc      product                                                               flags=display="Product image";backup=1;flashimg=1;logical;
+/vendor             ext4      vendor                                                                flags=display="Vendor";backup=1;logical;
+/vendor_image       emmc      vendor                                                                flags=display="Vendor image";backup=1;flashimg=1;logical;
+/odm                ext4      odm                                                                   flags=display="Odm";backup=1;logical;
+/odm_image          emmc      odm                                                                   flags=display="Odm image";backup=1;flashimg=1;logical;
+/metadata           ext4      /dev/block/bootdevice/by-name/metadata                                flags=display="Metadata";
+/data               f2fs      /dev/block/bootdevice/by-name/userdata                                flags=display="Data";
+/cache              ext4      /dev/block/bootdevice/by-name/rescue                                  flags=display="Cache";
+/sdcard1            vfat      /dev/block/mmcblk0p1                                                  flags=display="Sdcard1";
+/boot               emmc      /dev/block/bootdevice/by-name/boot                                    flags=display="Boot";backup=1;flashimg=1;
+/misc               emmc      /dev/block/bootdevice/by-name/misc                                    flags=display="Misc";backup=1;flashimg=1;
+/cust               ext4      /dev/block/bootdevice/by-name/cust                                    flags=display="Cust";
+/cust_image         emmc      /dev/block/bootdevice/by-name/cust                                    flags=display="Cust image";backup=1;flashimg=1;

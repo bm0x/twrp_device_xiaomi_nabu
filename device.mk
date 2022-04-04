@@ -74,15 +74,13 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-impl-wrapper \
     android.hardware.boot@1.2-impl.recovery \
     bootctrl.$(PRODUCT_PLATFORM) \
-    bootctrl.$(PRODUCT_PLATFORM).recovery
-    
-PRODUCT_PACKAGES_DEBUG += \
-    bootctl
-
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
+    bootctrl.$(PRODUCT_PLATFORM).recovery \
     libgptutils \
     libz \
     libcutils
+    
+PRODUCT_PACKAGES_DEBUG += \
+    bootctl
 
 PRODUCT_PACKAGES += \
     otapreopt_script \

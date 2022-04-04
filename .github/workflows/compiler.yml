@@ -18,11 +18,11 @@ on:
       DEVICE_URL:
         description: 'DEVICE_URL'
         required: true
-        default: 'https://github.com/bm0x/android_device_xiaomi_nabu'
+        default: 'https://github.com/bm0x/twrp_device_xiaomi_nabu'
       DEVICE_BRANCH:
         description: 'DEVICE_BRANCH'
         required: true
-        default: 'a11'
+        default: '11'
       DEVICE_PATH:
         description: 'DEVICE_PATH'
         required: true

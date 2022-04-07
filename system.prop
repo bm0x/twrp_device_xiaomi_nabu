@@ -1,0 +1,6 @@
+ro.display.series=Xiaomi Pad 5
+ro.product.board=msmnile
+ro.board.platform=msmnile
+sys.usb.controller=a600000.dwc3
+ro.boot.dynamic_partitions=true
+ro.boot.bootdevice=1d84000.ufshc

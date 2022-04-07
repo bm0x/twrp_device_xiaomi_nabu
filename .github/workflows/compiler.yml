@@ -100,7 +100,7 @@ jobs:
         cd ${{ steps.pwd.outputs.pwd }}
         git clone ${{ github.event.inputs.DEVICE_URL }} -b ${{ github.event.inputs.DEVICE_BRANCH }} ./${{ github.event.inputs.DEVICE_PATH }}
         git clone https://github.com/LineageOS/android_hardware_xiaomi.git -b lineage-18.1 ./hardware/xiaomi
-
+        git clone https://github.com/bm0x/twrp_vendor_xiaomi_nabu.git -b 11 ./device/xiaomi/nabu/recovery/root/vendor
     - name: Building
       run: |
         PATH=~/bin:$PATH

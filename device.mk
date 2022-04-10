@@ -105,52 +105,6 @@ PRODUCT_PACKAGES_ENG += \
 # Atrace
 PRODUCT_PACKAGES += \
     android.hardware.atrace@1.0-service
-
-# Display
-PRODUCT_PACKAGES += \
-    android.hardware.graphics.composer@2.4-service \
-    android.hardware.graphics.mapper@3.0-impl-qti-display \
-    android.hardware.graphics.mapper@4.0-impl-qti-display \
-    android.hardware.memtrack@1.0-impl \
-    android.hardware.memtrack@1.0-service \
-    gralloc.msmnile \
-    hwcomposer.msmnile \
-    libdisplayconfig.qti \
-    libdisplayconfig.qti.vendor \
-    libqdMetaData \
-    libtinyxml \
-    libvulkan \
-    memtrack.msmnile \
-    vendor.display.config@1.0 \
-    vendor.display.config@1.0.vendor \
-    vendor.display.config@1.1.vendor \
-    vendor.display.config@1.2.vendor \
-    vendor.display.config@1.3.vendor \
-    vendor.display.config@1.4.vendor \
-    vendor.display.config@1.5.vendor \
-    vendor.display.config@1.6.vendor \
-    vendor.display.config@1.7.vendor \
-    vendor.display.config@1.8.vendor \
-    vendor.display.config@1.9.vendor \
-    vendor.display.config@2.0 \
-    vendor.display.config@2.0.vendor \
-    vendor.qti.hardware.display.allocator-service \
-    vendor.qti.hardware.display.mapper@1.0.vendor \
-    vendor.qti.hardware.display.mapper@1.1.vendor \
-    vendor.qti.hardware.display.mapper@2.0.vendor \
-    vendor.qti.hardware.display.mapper@3.0.vendor \
-    vendor.qti.hardware.display.mapper@4.0.vendor
-
-RECOVERY_BINARY_SOURCE_FILES += \
-    $(TARGET_OUT_VENDOR_EXECUTABLES)/hw/vendor.qti.hardware.vibrator.service
-
-RECOVERY_LIBRARY_SOURCE_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
-    $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@1.0.so \
-    $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@2.0.so \
-    $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/libdisplayconfig.qti.so \
-    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.qti.hardware.vibrator.impl.so \
-    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libqtivibratoreffect.so
     
 # OTA
 PRODUCT_HOST_PACKAGES += \
@@ -266,13 +220,63 @@ TARGET_RECOVERY_DEVICE_MODULES += \
     libpcrecpp \
     libxml2
     
-TARGET_RECOVERY_DEVICE_MODULES += libion libandroidicu vendor.display.config@1.0 vendor.display.config@2.0 libdisplayconfig.qti
+TARGET_RECOVERY_DEVICE_MODULES += \
+    libion \
+    libandroidicu \
+    vendor.display.config@1.0 \
+    vendor.display.config@2.0 \
+    libdisplayconfig.qti \
+    libdisplaydebug \
+    libdisplayqos \
+    android.hardware.graphics.composer@2.1-resources \
+    android.hardware.graphics.composer@2.2-resources \
+    vendor.display.postproc@1.0 \
+    vendor.dolby.hardware.dms@2.0-impl \
+    vendor.dolby.hardware.dms@2.0 \
+    vendor.qti.hardware.display.allocator@1.0 \
+    vendor.qti.hardware.display.allocator@3.0 \
+    vendor.qti.hardware.display.allocator@4.0 \
+    vendor.qti.hardware.display.composer@1.0 \
+    vendor.qti.hardware.display.composer@2.0 \
+    vendor.qti.hardware.display.mapper@1.0 \
+    vendor.qti.hardware.display.mapper@2.0 \
+    vendor.qti.hardware.display.mapper@3.0 \
+    vendor.qti.hardware.display.mapper@4.0 \
+    vendor.qti.hardware.display.mapperextensions@1.0 \
+    vendor.qti.hardware.display.mapperextensions@1.1 \
+    vendor.qti.hardware.display.improvetouch.touchcompanion@1.0-service \
+    vendor.qti.hardware.display.improvetouch.touchcompanion@1.0 \
+    vendor.xiaomi.hardware.displayfeature@1.0 \
+    vendor.xiaomi.hardware.touchfeature@1.0
+
 
 RECOVERY_LIBRARY_SOURCE_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
-    $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@1.0.so \
-    $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@2.0.so \
-    $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/libdisplayconfig.qti.so
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.display.config@1.0.so \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.display.config@2.0.so \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libdisplayconfig.qti.so \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libdisplaydebug \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libdisplayqos \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/android.hardware.graphics.composer@2.1-resources \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/android.hardware.graphics.composer@2.2-resources \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.display.postproc@1.0 \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.dolby.hardware.dms@2.0-impl \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.dolby.hardware.dms@2.0 \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.qti.hardware.display.allocator@1.0 \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.qti.hardware.display.allocator@3.0 \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.qti.hardware.display.allocator@4.0 \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.qti.hardware.display.composer@1.0 \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.qti.hardware.display.composer@2.0 \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.qti.hardware.display.mapper@1.0 \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.qti.hardware.display.mapper@2.0 \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.qti.hardware.display.mapper@3.0 \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.qti.hardware.display.mapper@4.0 \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.qti.hardware.display.mapperextensions@1.0 \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.qti.hardware.display.mapperextensions@1.1 \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.qti.hardware.display.improvetouch.touchcompanion@1.0-service \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.qti.hardware.display.improvetouch.touchcompanion@1.0 \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.xiaomi.hardware.displayfeature@1.0 \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.xiaomi.hardware.touchfeature@1.0
 
 PRODUCT_COPY_FILES += \
     $(OUT_DIR)/target/product/$(PRODUCT_RELEASE_NAME)/obj/SHARED_LIBRARIES/libandroidicu_intermediates/libandroidicu.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libandroidicu.so    

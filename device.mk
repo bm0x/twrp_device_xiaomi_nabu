@@ -28,9 +28,11 @@ $(call inherit-product, \
 #A/B
 BOARD_USES_RECOVERY_AS_BOOT := true
 AB_OTA_UPDATER := true
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
 AB_OTA_PARTITIONS += \
     boot \
     dtbo \
+    odm \
     product \
     system \
     system_ext \

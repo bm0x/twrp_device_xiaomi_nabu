@@ -112,19 +112,21 @@ BOARD_USES_METADATA_PARTITION := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
-# Kernel
-BOARD_KERNEL_CMDLINE := \
-    ttyMSM0,115200n8 \
-    earlycon=msm_geni_serial,0xa90000 \
-    androidboot.hardware=qcom \
-    androidboot.console=ttyMSM0 \
-    androidboot.memcg=1 \
-    lpm_levels.sleep_disabled=1 \
-    video=vfb:640x400,bpp=32,memsize=3072000 \
-    msm_rtb.filter=0x237 \
-    service_locator.enable=1 \
-    swiotlb=2048 \
-    androidboot.usbcontroller=a600000.dwc3 \
+
+VENDOR_CMDLINE := "console=ttyMSM0,115200n8 \
+		androidboot.hardware=qcom \
+		androidboot.console=ttyMSM0 \
+		androidboot.memcg=1 \
+		lpm_levels.sleep_disabled=1 \
+		video=vfb:640x400,bpp=32,memsize=3072000 \
+		msm_rtb.filter=0x237 \
+		service_locator.enable=1 \
+		androidboot.usbcontroller=a600000.dwc3 \
+		swiotlb=2048 \
+		loop.max_part=7 \
+		cgroup.memory=nokmem,nosocket \
+		reboot=panic_warm \
+		androidboot.init_fatal_reboot_target=recovery" \
     androidboot.selinux=permissive \
     androidboot.vbmeta.avb_version=1.0 \
     androidboot.boot_devices=soc/1d84000.ufshc
@@ -134,7 +136,8 @@ TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CLANG_COMPILE := true
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_BOOT_HEADER_VERSION := 3
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.gz-dtb
+#TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.gz-dtb
+BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
 
 ifeq ($(strip $(TARGET_PREBUILT_KERNEL)),)
 TARGET_KERNEL_SOURCE := kernel/xiaomi/nabu
@@ -145,6 +148,8 @@ BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
+BOARD_MKBOOTIMG_ARGS += --vendor_cmdline $(VENDOR_CMDLINE)
+BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE) --board ""
 
 # 16:10 Screen
 TARGET_SCREEN_WIDTH := 2560

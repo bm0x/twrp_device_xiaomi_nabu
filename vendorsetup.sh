@@ -62,7 +62,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	#Magiskboot
 	export OF_USE_MAGISKBOOT="1"
 	export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES="1"
-	#export OF_PATCH_VBMETA_FLAG="1"
+	export OF_PATCH_VBMETA_FLAG="1"
 
     # OTA & MIUI
     export OF_KEEP_DM_VERITY="1"

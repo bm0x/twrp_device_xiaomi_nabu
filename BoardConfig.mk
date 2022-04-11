@@ -126,10 +126,10 @@ VENDOR_CMDLINE := "console=ttyMSM0,115200n8 \
 		loop.max_part=7 \
 		cgroup.memory=nokmem,nosocket \
 		reboot=panic_warm \
-		androidboot.init_fatal_reboot_target=recovery" \
-    androidboot.selinux=permissive \
-    androidboot.vbmeta.avb_version=1.0 \
-    androidboot.boot_devices=soc/1d84000.ufshc
+		androidboot.init_fatal_reboot_target=recovery \
+    	androidboot.selinux=permissive \
+    	androidboot.vbmeta.avb_version=1.0 \
+    	androidboot.boot_devices=soc/1d84000.ufshc"
 
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64

@@ -139,7 +139,7 @@ PRODUCT_SOONG_NAMESPACES += \
 
 PRODUCT_PACKAGES += \
     fstab.qcom \
-    ueventd.qcom.rc 
+    ueventd.rc 
     
 # Sensors
 PRODUCT_PACKAGES += \

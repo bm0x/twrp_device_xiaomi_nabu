@@ -36,7 +36,6 @@ PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,device/xiaomi/nabu/recover
 $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root/vendor/firmware,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/firmware) \
 $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root/system,$(TARGET_COPY_OUT_RECOVERY)/root/system) \
 $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root/vendor/etc,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/etc) \
-$(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root/vendor/lib,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib) \
 $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root/vendor/lib64,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib64)
 
 # Device identifier. This must come after all inclusions

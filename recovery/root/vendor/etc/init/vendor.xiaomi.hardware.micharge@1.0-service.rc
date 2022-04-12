@@ -1,0 +1,32 @@
+on post-fs-data
+    chown system system /sys/class/power_supply/wireless/reverse_chg_mode
+    chown system system /sys/class/power_supply/wireless/bt_state
+    chown system system /sys/class/power_supply/wireless/rx_cr
+    chown system system /sys/class/power_supply/main/cool_mode
+    chown system system /sys/class/power_supply/battery/night_charging
+
+on property:dev.bootcomplete=1
+    chown system system /sys/class/qcom-battery/reverse_chg_mode
+    chown system system /sys/class/qcom-battery/bt_state
+    chown system system /sys/class/qcom-battery/rx_cr
+    chown system system /sys/class/qcom-battery/input_suspend
+    chown system system /sys/class/qcom-battery/cool_mode
+    chown system system /sys/class/qcom-battery/night_charging
+    chown system system /sys/class/qcom-battery/bt_transfer_start
+    chown system system /sys/class/qcom-battery/wls_tx_speed
+    chown system system /sys/class/qcom-battery/wireless_chip_fw
+    chown system system /sys/class/qcom-battery/smart_batt
+    chmod 0660 /sys/class/qcom-battery/reverse_chg_mode
+    chmod 0660 /sys/class/qcom-battery/rx_cr
+    chmod 0660 /sys/class/qcom-battery/input_suspend
+    chmod 0660 /sys/class/qcom-battery/cool_mode
+    chmod 0660 /sys/class/qcom-battery/night_charging
+    chmod 0660 /sys/class/qcom-battery/bt_transfer_start
+    chmod 0660 /sys/class/qcom-battery/wls_tx_speed
+    chmod 0660 /sys/class/qcom-battery/wireless_chip_fw
+    chmod 0660 /sys/class/qcom-battery/smart_batt
+
+service micharge-hal-1-0 /vendor/bin/hw/vendor.xiaomi.hardware.micharge@1.0-service
+    class hal
+    user system
+    group system

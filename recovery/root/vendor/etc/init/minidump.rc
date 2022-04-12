@@ -1,0 +1,17 @@
+on post-fs-data
+  mkdir /data/vendor/diag 2771 root log
+
+on charger
+  start poweroffm64
+
+#minidump service
+service minidump64 /vendor/bin/minidump64
+  class late_start
+  oneshot
+  seclabel u:r:minidump64:s0
+
+#poweroff monitor service
+service poweroffm64 /vendor/bin/poweroffm64
+    class late_start
+    oneshot
+    seclabel u:r:poweroffm64:s0

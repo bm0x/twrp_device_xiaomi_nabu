@@ -1,0 +1,29 @@
+service batteryd /vendor/bin/batteryd
+    class last_start
+    user root
+    group system system wakelock
+    disabled
+    oneshot
+    seclabel u:r:batteryd:s0
+
+on post-fs
+    chmod 0664 /sys/class/power_supply/bms/update_now
+    chmod 0664 /sys/class/power_supply/bms/soh
+
+on boot
+    start batteryd
+
+#run batteryd in off-charge mode
+on charger
+    start batteryd
+
+service batterylog /system/bin/sh /system/bin/batterylog.sh
+    class main
+    user root
+    group system
+    disabled
+    oneshot
+    seclabel u:r:batteryd:s0
+
+on property:persist.sys.offlinelog.batteryd=true
+    start batterylog

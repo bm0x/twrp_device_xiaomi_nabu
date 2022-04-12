@@ -1,0 +1,2 @@
+on post-fs
+    insmod /vendor/lib/modules/exfat.ko

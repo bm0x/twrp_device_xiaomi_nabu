@@ -1,0 +1,20 @@
+on post-fs-data
+	mkdir /data/vendor/mi_ic 2771 root log
+
+#mi_ic service
+service mi_ic /vendor/bin/MI_IC
+	class main
+	disabled
+	oneshot
+	seclabel u:r:mi_ic:s0
+
+on property:vendor.mi_ic.is.valid=0
+	stop mi_ic
+
+on property:vendor.mi_ic.is.valid=1
+	start mi_ic
+	setprop vendor.mi_ic.is.valid 3
+
+on property:vendor.mi_ic.is.valid=2
+	rm /data/vendor/mi_ic/mi_ic.log
+	setprop vendor.mi_ic.is.valid 4

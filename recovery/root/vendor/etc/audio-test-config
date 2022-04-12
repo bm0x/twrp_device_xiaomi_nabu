@@ -1,0 +1,272 @@
+#playback_spk
+enable
+QUAT_TDM_RX_0 Audio Mixer MultiMedia1:1
+QUAT_TDM_RX_0 SampleRate:KHZ_48
+QUAT_TDM_RX_0 Channels:Two
+QUAT_TDM_RX_0 Format:S24_LE
+BL AMP PCM Gain:18
+BL PCM Source:ASP
+BL ASPRX1 Slot Position:4
+TL AMP PCM Gain:18
+TL PCM Source:ASP
+TL ASPRX1 Slot Position:4
+BR AMP PCM Gain:18
+BR PCM Source:ASP
+BR ASPRX1 Slot Position:4
+TR AMP PCM Gain:18
+TR PCM Source:ASP
+TR ASPRX1 Slot Position:4
+
+
+disable
+QUAT_TDM_RX_0 Audio Mixer MultiMedia1:0
+QUAT_TDM_RX_0 SampleRate:KHZ_48
+QUAT_TDM_RX_0 Channels:One
+QUAT_TDM_RX_0 Format:S16_LE
+BL AMP PCM Gain:19
+BL PCM Source:None
+BL ASPRX1 Slot Position:4
+TL AMP PCM Gain:19
+TL PCM Source:None
+TL ASPRX1 Slot Position:4
+BR AMP PCM Gain:19
+BR PCM Source:None
+BR ASPRX1 Slot Position:4
+TR AMP PCM Gain:19
+TR PCM Source:None
+TR ASPRX1 Slot Position:4
+
+
+#playback_tr-spk
+enable
+QUAT_TDM_RX_0 Audio Mixer MultiMedia1:1
+QUAT_TDM_RX_0 SampleRate:KHZ_48
+QUAT_TDM_RX_0 Channels:Two
+QUAT_TDM_RX_0 Format:S24_LE
+TR AMP PCM Gain:18
+TR PCM Source:ASP
+TR ASPRX1 Slot Position:4
+
+disable
+QUAT_TDM_RX_0 Audio Mixer MultiMedia1:0
+QUAT_TDM_RX_0 SampleRate:KHZ_48
+QUAT_TDM_RX_0 Channels:One
+QUAT_TDM_RX_0 Format:S16_LE
+TR AMP PCM Gain:19
+TR PCM Source:None
+TR ASPRX1 Slot Position:4
+
+
+#playback_tl-spk
+enable
+QUAT_TDM_RX_0 Audio Mixer MultiMedia1:1
+QUAT_TDM_RX_0 SampleRate:KHZ_48
+QUAT_TDM_RX_0 Channels:Two
+QUAT_TDM_RX_0 Format:S24_LE
+TL AMP PCM Gain:18
+TL PCM Source:ASP
+TL ASPRX1 Slot Position:4
+
+disable
+QUAT_TDM_RX_0 Audio Mixer MultiMedia1:0
+QUAT_TDM_RX_0 SampleRate:KHZ_48
+QUAT_TDM_RX_0 Channels:One
+QUAT_TDM_RX_0 Format:S16_LE
+TL AMP PCM Gain:19
+TL PCM Source:None
+
+
+#playback_br-spk
+enable
+QUAT_TDM_RX_0 Audio Mixer MultiMedia1:1
+QUAT_TDM_RX_0 SampleRate:KHZ_48
+QUAT_TDM_RX_0 Channels:Two
+QUAT_TDM_RX_0 Format:S24_LE
+BR AMP PCM Gain:18
+BR PCM Source:ASP
+BR ASPRX1 Slot Position:4
+
+
+disable
+QUAT_TDM_RX_0 Audio Mixer MultiMedia1:0
+QUAT_TDM_RX_0 SampleRate:KHZ_48
+QUAT_TDM_RX_0 Channels:One
+QUAT_TDM_RX_0 Format:S16_LE
+BR AMP PCM Gain:19
+BR PCM Source:None
+BR ASPRX1 Slot Position:4
+
+
+#playback_bl-spk
+enable
+QUAT_TDM_RX_0 Audio Mixer MultiMedia1:1
+QUAT_TDM_RX_0 SampleRate:KHZ_48
+QUAT_TDM_RX_0 Channels:Two
+QUAT_TDM_RX_0 Format:S24_LE
+BL AMP PCM Gain:18
+BL PCM Source:ASP
+BL ASPRX1 Slot Position:4
+
+
+disable
+QUAT_TDM_RX_0 Audio Mixer MultiMedia1:0
+QUAT_TDM_RX_0 SampleRate:KHZ_48
+QUAT_TDM_RX_0 Channels:One
+QUAT_TDM_RX_0 Format:S16_LE
+BL AMP PCM Gain:19
+BL PCM Source:None
+BL ASPRX1 Slot Position:4
+
+
+#playback_headphone
+enable
+SLIM RX0 MUX:AIF1_PB
+SLIM RX1 MUX:AIF1_PB
+SLIM_0_RX Channels:Two
+RX INT1_1 MIX1 INP0:RX0
+RX INT2_1 MIX1 INP0:RX1
+SLIMBUS_0_RX Audio Mixer MultiMedia1:1
+RX INT1 DEM MUX:CLSH_DSM_OUT
+RX INT2 DEM MUX:CLSH_DSM_OUT
+COMP1 Switch:1
+COMP2 Switch:1
+
+disable
+SLIM RX0 MUX:ZERO
+SLIM RX1 MUX:ZERO
+SLIM_0_RX Channels:One
+RX INT1_1 MIX1 INP0:ZERO
+RX INT2_1 MIX1 INP0:ZERO
+SLIMBUS_0_RX Audio Mixer MultiMedia1:0
+
+
+#capture_main-mic
+enable
+AIF1_CAP Mixer SLIM TX6:1
+SLIM_0_TX Channels:One
+CDC_IF TX6 MUX:DEC6
+ADC MUX6:AMIC
+AMIC MUX6:ADC1
+IIR0 INP0 MUX:DEC6
+MultiMedia1 Mixer SLIM_0_TX:1
+SLIM_0_TX SampleRate:rate
+
+
+disable
+AIF1_CAP Mixer SLIM TX6:0
+SLIM_0_TX Channels:One
+CDC_IF TX6 MUX:ZERO
+ADC MUX6:AMIC
+AMIC MUX6:ZERO
+IIR0 INP0 MUX:ZERO
+MultiMedia1 Mixer SLIM_0_TX:0
+SLIM_0_TX SampleRate:KHZ_48
+
+
+#capture_top-mic
+enable
+AIF1_CAP Mixer SLIM TX5:1
+SLIM_0_TX Channels:One
+CDC_IF TX5 MUX:DEC5
+ADC MUX5:AMIC
+AMIC MUX5:ADC3
+IIR0 INP0 MUX:DEC5
+MultiMedia1 Mixer SLIM_0_TX:1
+SLIM_0_TX SampleRate:rate
+
+
+disable
+AIF1_CAP Mixer SLIM TX5:0
+SLIM_0_TX Channels:One
+CDC_IF TX5 MUX:ZERO
+ADC MUX5:AMIC
+AMIC MUX5:ZERO
+IIR0 INP0 MUX:ZERO
+MultiMedia1 Mixer SLIM_0_TX:0
+SLIM_0_TX SampleRate:KHZ_48
+
+
+#setup_mainmic2headphone
+enable
+AIF1_CAP Mixer SLIM TX6:1
+SLIM_0_TX Channels:One
+CDC_IF TX6 MUX:DEC6
+ADC MUX6:AMIC
+AMIC MUX6:ADC1
+IIR0 INP0 MUX:DEC6
+
+RX INT1_1 MIX1 INP0:IIR0
+RX INT2_1 MIX1 INP0:IIR0
+RX INT1 DEM MUX:CLSH_DSM_OUT
+RX INT2 DEM MUX:CLSH_DSM_OUT
+HPHL Volume:20
+HPHR Volume:20
+RX1 Digital Volume:84
+RX2 Digital Volume:84
+disable
+
+
+#setup_headsetmic2headphone
+enable
+ADC MUX7:AMIC
+AMIC MUX7:ADC2
+IIR0 INP0 MUX:DEC7
+IIR0 INP0 Volume:84
+DEC7 Volume:84
+ADC2 Volume:4
+RX INT1_1 MIX1 INP0:IIR0
+RX INT2_1 MIX1 INP0:IIR0
+RX INT1 DEM MUX:CLSH_DSM_OUT
+RX INT2 DEM MUX:CLSH_DSM_OUT
+HPHL Volume:20
+HPHR Volume:20
+RX1 Digital Volume:84
+RX2 Digital Volume:84
+disable
+
+
+#setup_topmic2headphone
+enable
+AIF1_CAP Mixer SLIM TX5:1
+SLIM_0_TX Channels:One
+CDC_IF TX5 MUX:DEC5
+ADC MUX5:AMIC
+AMIC MUX5:ADC3
+IIR0 INP0 MUX:DEC5
+RX INT1_1 MIX1 INP0:IIR0
+RX INT2_1 MIX1 INP0:IIR0
+RX INT1 DEM MUX:CLSH_DSM_OUT
+RX INT2 DEM MUX:CLSH_DSM_OUT
+HPHL Volume:20
+HPHR Volume:20
+RX1 Digital Volume:84
+RX2 Digital Volume:84
+disable
+
+
+#teardown_loopback
+enable
+AIF1_CAP Mixer SLIM TX6:0
+SLIM_0_TX Channels:One
+CDC_IF TX6 MUX:ZERO
+ADC MUX6:AMIC
+AMIC MUX6:ZERO
+AIF1_CAP Mixer SLIM TX5:0
+SLIM_0_TX Channels:One
+CDC_IF TX5 MUX:ZERO
+ADC MUX5:AMIC
+AMIC MUX5:ZERO
+IIR0 INP0 MUX:ZERO
+ADC MUX7:AMIC
+AMIC MUX7:ZERO
+IIR0 INP0 Volume:84
+DEC7 Volume:84
+RX INT1 DEM MUX:CLSH_DSM_OUT
+RX INT2 DEM MUX:CLSH_DSM_OUT
+RX INT1_1 MIX1 INP0:ZERO
+RX INT2_1 MIX1 INP0:ZERO
+HPHL Volume:20
+HPHR Volume:20
+RX1 Digital Volume:84
+RX2 Digital Volume:84
+disable

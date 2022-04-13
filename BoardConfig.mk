@@ -32,6 +32,9 @@ BOARD_USES_QCOM_HARDWARE := true
 
 DEVICE_PATH := device/xiaomi/nabu
 
+# Inherit from sm8150-common
+include device/xiaomi/sm8150-common/BoardConfigCommon.mk
+
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
 
@@ -140,6 +143,11 @@ TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
 BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/prebuilt/nabu.dtb
 BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
 
+ifeq ($(strip $(TARGET_PREBUILT_KERNEL)),)
+TARGET_KERNEL_SOURCE := kernel/xiaomi/nabu
+TARGET_KERNEL_CONFIG := nabu_user_defconfig
+endif
+
 BOARD_INCLUDE_RECOVERY_DTBO := true
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 
@@ -224,3 +232,6 @@ TARGET_USES_LOGD := true
 TARGET_USES_MKE2FS := true
 TW_NO_SCREEN_BLANK := true
 TW_SCREEN_BLANK_ON_BOOT := true
+
+# Inherit the proprietary files
+include vendor/xiaomi/sm8150-common/BoardConfigVendor.mk

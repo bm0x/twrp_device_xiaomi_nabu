@@ -139,8 +139,19 @@ PRODUCT_SOONG_NAMESPACES += \
 
 PRODUCT_PACKAGES += \
     fstab.qcom \
-    ueventd.qcom.rc
-    ueventd.rc 
+    ueventd.qcom.rc \
+    ueventd.rc \
+    gatekeeperd.rc \
+    hwservicemanager.rc \
+    keystore.rc \
+    logd.rc \
+    recovery-persist.rc \
+    recovery-refresh.rc \
+    servicemanager.rc \
+    tombstoned.rc \
+    vdc.rc \
+    vold.rc \
+    wait_for_keymaster.rc
     
 # Sensors
 PRODUCT_PACKAGES += \

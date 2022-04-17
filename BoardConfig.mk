@@ -32,9 +32,6 @@ BOARD_USES_QCOM_HARDWARE := true
 
 DEVICE_PATH := device/xiaomi/nabu
 
-# Inherit from sm8150-common
-include device/xiaomi/sm8150-common/BoardConfigCommon.mk
-
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
 
@@ -54,21 +51,12 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a55
 TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a55
-TARGET_BOARD_SUFFIX := _64
-TARGET_USES_64_BIT_BINDER := true
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := nabu
 
 # APEX
 DEXPREOPT_GENERATE_APEX_IMAGE := true
-
-# Dex
-ifeq ($(HOST_OS),linux)
-  ifneq ($(TARGET_BUILD_VARIANT),eng)
-    WITH_DEXPREOPT ?= true
-  endif
-endif
 
 # Battery
 BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
@@ -81,7 +69,6 @@ BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
-TARGET_COPY_OUT_VENDOR := vendor
 
 # Partitions
 BOARD_EXT4_SHARE_DUP_BLOCKS := true
@@ -93,6 +80,8 @@ BOARD_SUPER_PARTITION_SIZE := 9126805504 # TODO: Fix hardcoded value
 BOARD_SUPER_PARTITION_GROUPS := xiaomi_dynamic_partitions
 BOARD_XIAOMI_DYNAMIC_PARTITIONS_PARTITION_LIST := system system_ext product vendor odm
 BOARD_XIAOMI_DYNAMIC_PARTITIONS_SIZE := 9122611200 # TODO: Fix hardcoded value
+PRODUCT_BUILD_SUPER_PARTITION := false
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # System as root
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
@@ -100,8 +89,20 @@ BOARD_ROOT_EXTRA_FOLDERS := bluetooth dsp firmware persist
 BOARD_SUPPRESS_SECURE_ERASE := true
 
 # Workaround for error copying vendor files to recovery ramdisk
-BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+TARGET_COPY_OUT_ODM := odm
+TARGET_COPY_OUT_SYSTEM_EXT := system_ext
 TARGET_COPY_OUT_VENDOR := vendor
+TARGET_COPY_OUT_PRODUCT := product
+
+# QMI
+TARGET_FWK_SUPPORTS_FULL_VALUEADDS := true
+
+BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 
 # A/B
 AB_OTA_UPDATER := true
@@ -116,7 +117,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
 #Kernel
-VENDOR_CMDLINE := "console=ttyMSM0,115200n8 \
+BOARD_KERNEL_CMDLINE += console=ttyMSM0,115200n8 \
 		androidboot.hardware=qcom \
 		androidboot.console=ttyMSM0 \
 		androidboot.memcg=1 \
@@ -130,18 +131,21 @@ VENDOR_CMDLINE := "console=ttyMSM0,115200n8 \
 		cgroup.memory=nokmem,nosocket \
 		reboot=panic_warm \
 		androidboot.init_fatal_reboot_target=recovery \
-    androidboot.selinux=permissive \
-    androidboot.vbmeta.avb_version=1.0 \
-    androidboot.boot_devices=soc/1d84000.ufshc"
-
-TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_HEADER_ARCH := arm64
+        androidboot.selinux=permissive \
+        androidboot.vbmeta.avb_version=1.0 \
+        androidboot.boot_devices=soc/1d84000.ufshc
+        
+BOARD_KERNEL_BINARIES := kernel
 TARGET_KERNEL_CLANG_COMPILE := true
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_BOOT_HEADER_VERSION := 3
+BOARD_KERNEL_SEPARATED_DTBO := true
+KERNEL_LD := LD=ld.lld
+TARGET_KERNEL_ADDITIONAL_FLAGS := DTC_EXT=$(shell pwd)/prebuilts/misc/linux-x86/dtc/dtc LLVM=1
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
 BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/prebuilt/nabu.dtb
 BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
+TARGET_FORCE_PREBUILT_KERNEL := true
 
 ifeq ($(strip $(TARGET_PREBUILT_KERNEL)),)
 TARGET_KERNEL_SOURCE := kernel/xiaomi/nabu
@@ -155,12 +159,14 @@ BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
-BOARD_MKBOOTIMG_ARGS += --vendor_cmdline $(VENDOR_CMDLINE)
-BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE) --board ""
 
 # 16:10 Screen
 TARGET_SCREEN_WIDTH := 2560
 TARGET_SCREEN_HEIGHT := 1600
+
+# Device uses high-density artwork where available
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
@@ -175,13 +181,12 @@ TARGET_USES_DRM_PP := true
 TARGET_USES_GRALLOC1 := true
 TARGET_USES_HWC2 := true
 TARGET_USES_ION := true
+TARGET_DISABLED_UBWC := true
 
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
 TARGET_USES_MKE2FS := true
-TARGET_RECOVERY_UI_MARGIN_HEIGHT := 120
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
-
 
 # Verified Boot
 BOARD_AVB_ENABLE := true
@@ -211,7 +216,6 @@ PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
 BOARD_USES_QCOM_FBE_DECRYPTION := true
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
 
-
 # TWRP Configuration
 TW_DEVICE_VERSION := Xiaomi_Pad_5-bm0x_Testing
 TW_THEME := portrait_hdpi
@@ -232,6 +236,3 @@ TARGET_USES_LOGD := true
 TARGET_USES_MKE2FS := true
 TW_NO_SCREEN_BLANK := true
 TW_SCREEN_BLANK_ON_BOOT := true
-
-# Inherit the proprietary files
-include vendor/xiaomi/sm8150-common/BoardConfigVendor.mk

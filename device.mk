@@ -161,7 +161,7 @@ PRODUCT_PACKAGES += \
     qcom_decrypt_fbe
 
 PRODUCT_SOONG_NAMESPACES += \
-    vendor/qcom/opensource/commonsys-intf/display
+    hardware/qcom-caf/sm8150/display
 
 PRODUCT_PACKAGES += \
     fstab.qcom \

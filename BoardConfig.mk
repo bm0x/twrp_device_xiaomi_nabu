@@ -80,6 +80,8 @@ BOARD_SUPER_PARTITION_SIZE := 9126805504 # TODO: Fix hardcoded value
 BOARD_SUPER_PARTITION_GROUPS := xiaomi_dynamic_partitions
 BOARD_XIAOMI_DYNAMIC_PARTITIONS_PARTITION_LIST := system system_ext product vendor odm
 BOARD_XIAOMI_DYNAMIC_PARTITIONS_SIZE := 9122611200 # TODO: Fix hardcoded value
+BOARD_USES_SYSTEM_EXTIMAGE := true
+BOARD_USES_PRODUCTIMAGE := true
 
 # System as root
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
@@ -162,10 +164,6 @@ BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 # 16:10 Screen
 TARGET_SCREEN_WIDTH := 2560
 TARGET_SCREEN_HEIGHT := 1600
-
-# Device uses high-density artwork where available
-PRODUCT_AAPT_CONFIG := normal
-PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop

@@ -58,6 +58,14 @@ AB_OTA_POSTINSTALL_CONFIG += \
     POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
     FILESYSTEM_TYPE_vendor=ext4 \
     POSTINSTALL_OPTIONAL_vendor=true
+
+# Dynamic partitions
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+PRODUCT_BUILD_SUPER_PARTITION := false
+
+# Device uses high-density artwork where available
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
     
 PRODUCT_PACKAGES_DEBUG += update_engine_client
 PRODUCT_PACKAGES += \

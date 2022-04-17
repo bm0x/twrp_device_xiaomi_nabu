@@ -84,7 +84,6 @@ BOARD_USES_SYSTEM_EXTIMAGE := true
 BOARD_USES_PRODUCTIMAGE := true
 
 # System as root
-BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 BOARD_ROOT_EXTRA_FOLDERS := bluetooth dsp firmware persist
 BOARD_SUPPRESS_SECURE_ERASE := true
 

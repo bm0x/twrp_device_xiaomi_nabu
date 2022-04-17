@@ -80,7 +80,6 @@ BOARD_SUPER_PARTITION_SIZE := 9126805504 # TODO: Fix hardcoded value
 BOARD_SUPER_PARTITION_GROUPS := xiaomi_dynamic_partitions
 BOARD_XIAOMI_DYNAMIC_PARTITIONS_PARTITION_LIST := system system_ext product vendor odm
 BOARD_XIAOMI_DYNAMIC_PARTITIONS_SIZE := 9122611200 # TODO: Fix hardcoded value
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # System as root
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
@@ -209,7 +208,7 @@ BUILD_WITHOUT_VENDOR := true
 # Power
 TARGET_USES_INTERACTION_BOOST := true
 
-# Hack: prevent anti rollback
+# Hack: prevent anti rollback 
 # Crypto
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_CRYPTO_FBE := true

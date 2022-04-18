@@ -202,8 +202,10 @@ PRODUCT_PACKAGES += \
     libdisplayconfig.qti.vendor \
     libqdMetaData \
     libtinyxml \
-    memtrack.default \
-    vndservicemanager
+    memtrack.msmnile \
+    vndservicemanager \
+    hwcomposer.msmnile \
+    gralloc.msmnile \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/snapdragon_color_libs_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/snapdragon_color_libs_config.xml
@@ -254,10 +256,6 @@ PRODUCT_PACKAGES += \
 # Vendor libstdc++
 PRODUCT_PACKAGES += \
     libstdc++.vendor
-    
-# Vibrator
-PRODUCT_PACKAGES += \
-    vendor.qti.hardware.vibrator.service
     
 #VNDK
 PRODUCT_PACKAGES += \

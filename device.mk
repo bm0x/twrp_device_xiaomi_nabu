@@ -205,7 +205,7 @@ PRODUCT_PACKAGES += \
     memtrack.msmnile \
     vndservicemanager \
     hwcomposer.msmnile \
-    gralloc.msmnile \
+    gralloc.msmnile
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/snapdragon_color_libs_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/snapdragon_color_libs_config.xml

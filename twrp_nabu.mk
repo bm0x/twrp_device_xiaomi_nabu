@@ -19,6 +19,12 @@
 # Installs gsi keys into ramdisk, to boot a2 developer GSI with verified boot.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
+# Virtual A/B Inherits
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
+
+# Setup dalvik vm configs
+$(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
+
 # Inherit from nabu device
 $(call inherit-product, device/xiaomi/nabu/device.mk)
 

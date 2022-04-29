@@ -70,14 +70,14 @@ soong_config_module_type {
 
 soong_config_string_variable {
     name: "PARTITION_SCHEME",
-    values: ["dynamic"],
+    values: ["nabu"],
 }
 
 xiaomi_msmnile_rootdir_prebuilt_etc {
     name: "fstab.qcom",
     soong_config_variables: {
         PARTITION_SCHEME: {
-            dynamic: {
+            nabu: {
                 src: "etc/fstab_msmnile.qcom",
             },
             conditions_default: {

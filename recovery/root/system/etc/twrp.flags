@@ -3,6 +3,17 @@
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 
 # mount point  fstype  device                             device2                flags
+# Logical partitions
+system		/system		ext4							wait,logical,first_stage_mount
+vendor		/vendor		ext4							wait,logical,first_stage_mount
+product		/product	ext4							wait,logical,first_stage_mount
+odm		/odm		ext4							wait,logical,first_stage_mount
+
+# Symlinked partitions
+/system_image	emmc		/dev/block/bootdevice/by-name/system			flags=backup=0;flashimg;display="System Image"
+/vendor_image	emmc		/dev/block/bootdevice/by-name/vendor			flags=backup=0;flashimg;display="Vendor Image"
+/product_image	emmc		/dev/block/bootdevice/by-name/product			flags=backup=0;flashimg;display="Product Image"
+/odm_image	emmc		/dev/block/bootdevice/by-name/odm			flags=backup=0;flashimg;display="Odm Image"
 
 /cache         ext4    /dev/block/bootdevice/by-name/cache
 /metadata      ext4    /dev/block/bootdevice/by-name/metadata                    flags=display="Metadata";backup=1

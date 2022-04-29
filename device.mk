@@ -172,21 +172,27 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/interfaces \
     hardware/google/pixel
 
+# Rootdir
+PRODUCT_PACKAGES += \
+    init.class_main.sh \
+    init.qcom.class_core.sh \
+    init.qcom.coex.sh \
+    init.qcom.early_boot.sh \
+    init.qcom.post_boot.sh \
+    init.qcom.sh \
+    init.qcom.usb.sh \
+    init.qti.chg_policy.sh \
+    init.qti.dcvs.sh
+
 PRODUCT_PACKAGES += \
     fstab.qcom \
-    ueventd.qcom.rc \
-    ueventd.rc \
-    gatekeeperd.rc \
-    hwservicemanager.rc \
-    keystore.rc \
-    logd.rc \
-    recovery-persist.rc \
-    recovery-refresh.rc \
-    servicemanager.rc \
-    tombstoned.rc \
-    vdc.rc \
-    vold.rc \
-    wait_for_keymaster.rc
+    init.nfc.rc \
+    init.qcom.power.rc \
+    init.qcom.rc \
+    init.qcom.usb.rc \
+    init.recovery.qcom.rc \
+    init.target.rc \
+    ueventd.qcom.rc
     
 # Display
 PRODUCT_PACKAGES += \

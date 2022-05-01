@@ -48,6 +48,7 @@ AB_OTA_PARTITIONS += \
 
 # A/B
 ENABLE_VIRTUAL_AB := true
+TARGET_IS_VAB := true
 
 #A/B
 AB_OTA_POSTINSTALL_CONFIG += \
@@ -65,6 +66,9 @@ AB_OTA_POSTINSTALL_CONFIG += \
 # Dynamic partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_BUILD_SUPER_PARTITION := false
+
+#Settings for nabu (Rootdir)
+PRODUCT_IS_XIAOMI_NABU := true
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal

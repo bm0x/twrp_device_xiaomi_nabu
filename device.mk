@@ -98,8 +98,8 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-impl-wrapper.recovery \
     android.hardware.boot@1.2-impl-wrapper \
     android.hardware.boot@1.2-impl.recovery \
-    bootctrl.$(PRODUCT_PLATFORM) \
-    bootctrl.$(PRODUCT_PLATFORM).recovery \
+    bootctrl.msmnile \
+    bootctrl.msmnile.recovery \
     libgptutils \
     libz \
     libcutils

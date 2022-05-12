@@ -18,7 +18,7 @@
 cc_library {
     name: "libgptutils.xiaomi_msmnile",
     vendor: true,
-    recovery_available: false,
+    recovery_available: true,
     shared_libs: [
         "libcutils",
         "liblog",

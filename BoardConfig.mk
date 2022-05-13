@@ -149,10 +149,10 @@ BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/nabu-dtb.img
 TARGET_FORCE_PREBUILT_KERNEL := true
 
-ifeq ($(strip $(TARGET_PREBUILT_KERNEL)),)
-TARGET_KERNEL_SOURCE := kernel/xiaomi/nabu
-TARGET_KERNEL_CONFIG := nabu_user_defconfig
-endif
+#ifeq ($(strip $(TARGET_PREBUILT_KERNEL)),)
+#TARGET_KERNEL_SOURCE := kernel/xiaomi/nabu
+#TARGET_KERNEL_CONFIG := nabu_user_defconfig
+#endif
 
 BOARD_INCLUDE_RECOVERY_DTBO := true
 

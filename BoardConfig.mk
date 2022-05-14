@@ -133,26 +133,24 @@ BOARD_KERNEL_CMDLINE += console=ttyMSM0,115200n8 \
 		cgroup.memory=nokmem,nosocket \
 		reboot=panic_warm \
 		androidboot.init_fatal_reboot_target=recovery \
-        androidboot.selinux=permissive \
-        androidboot.vbmeta.avb_version=1.0 \
-        androidboot.boot_devices=soc/1d84000.ufshc
+        	androidboot.selinux=permissive \
+        	androidboot.vbmeta.avb_version=1.0 \
+        	androidboot.boot_devices=soc/1d84000.ufshc
         
 BOARD_KERNEL_BINARIES := kernel
 TARGET_KERNEL_CLANG_COMPILE := true
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_BOOT_HEADER_VERSION := 3
 BOARD_KERNEL_SEPARATED_DTBO := true
-KERNEL_LD := LD=ld.lld
-TARGET_KERNEL_ADDITIONAL_FLAGS += DTC_EXT=$(shell pwd)/prebuilts/misc/linux-x86/dtc/dtc LLVM=1
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
 BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/nabu-dtb.img
 TARGET_FORCE_PREBUILT_KERNEL := true
 
-#ifeq ($(strip $(TARGET_PREBUILT_KERNEL)),)
-#TARGET_KERNEL_SOURCE := kernel/xiaomi/nabu
-#TARGET_KERNEL_CONFIG := nabu_user_defconfig
-#endif
+ifeq ($(strip $(TARGET_PREBUILT_KERNEL)),)
+TARGET_KERNEL_SOURCE := kernel/xiaomi/nabu
+TARGET_KERNEL_CONFIG := nabu_user_defconfig
+endif
 
 BOARD_INCLUDE_RECOVERY_DTBO := true
 

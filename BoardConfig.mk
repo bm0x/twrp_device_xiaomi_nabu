@@ -15,8 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-
+ 
 # Bootloader
 BOARD_VENDOR := xiaomi
 PRODUCT_PLATFORM := msmnile
@@ -31,8 +30,6 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno640
 QCOM_BOARD_PLATFORMS += msmnile
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
-BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
-BOARD_MOVE_GSI_AVB_KEYS_TO_VENDOR_BOOT := true
 
 DEVICE_PATH := device/xiaomi/nabu
 
@@ -44,17 +41,18 @@ ALLOW_MISSING_DEPENDENCIES := true
 
 # Architecture
 TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-2a
+TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
 TARGET_CPU_VARIANT := kryo
+TARGET_CPU_VARIANT_RUNTIME := kryo485 
 
 TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv8-2a
+TARGET_2ND_ARCH_VARIANT := armv8-a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := cortex-a55
-TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a55
+TARGET_2ND_CPU_VARIANT := kryo
+TARGET_2ND_CPU_VARIANT_RUNTIME := kryo485
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := nabu
@@ -232,7 +230,7 @@ TARGET_RECOVERY_INITRC := $(DEVICE_PATH)/recovery/rootdir/etc/init.recovery.qcom
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
 
-BUILD_WITHOUT_VENDOR := true
+BUILD_WITHOUT_VENDOR := false
 
 # Power
 TARGET_USES_INTERACTION_BOOST := true

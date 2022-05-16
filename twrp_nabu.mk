@@ -31,8 +31,10 @@ $(call inherit-product, device/xiaomi/nabu/device.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 
-# Inherit some common TWRP stuff.
-#$(call inherit-product, vendor/twrp/config/common.mk)
+# Inherit some common TWRP stuff (if kernel tree exists) ## TESTING ##.
+ifneq ($(wildcard $(TARGET_KERNEL_SOURCE)),)
+    $(call inherit-product, vendor/twrp/config/common.mk)
+endif
 
 PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,device/xiaomi/nabu/recovery/root,recovery/root) \
 $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root/vendor/firmware,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/firmware) \

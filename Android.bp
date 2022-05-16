@@ -2,7 +2,7 @@ soong_namespace {
      imports: ["hardware/qcom-caf/bootctrl"],
 }
 
-headers_generator {
+lineage_generator {
     name: "generated_kernel_includes",
 
     // The headers make command

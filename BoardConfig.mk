@@ -232,7 +232,7 @@ DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
 
 BUILD_WITHOUT_VENDOR := false
 
-# Power
+# Power 
 TARGET_USES_INTERACTION_BOOST := true
 
 # Hack: prevent anti rollback 

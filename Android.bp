@@ -2,20 +2,6 @@ soong_namespace {
      imports: ["hardware/qcom-caf/bootctrl"],
 }
 
-lineage_generator {
-    name: "generated_kernel_includes",
-
-    // The headers make command
-    cmd: "echo 'd'",
-
-    // Directories that can be imported by a cc_* module generated_headers property
-    export_include_dirs: ["usr/include", "usr/techpack/audio/include"],
-
-    // Sources for dependency tracking
-    dep_root: "$(TARGET_KERNEL_SOURCE)",
-    dep_files: [ "Makefile", "include/**/*", "arch/$(KERNEL_ARCH)/include/**/*", "techpack/audio/include/**/*"],
-}
-
 cc_library_headers {
     name: "generated_kernel_headers",
     generated_headers: ["generated_kernel_includes"],

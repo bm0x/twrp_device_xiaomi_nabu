@@ -2,33 +2,7 @@ soong_namespace {
      imports: ["hardware/qcom-caf/bootctrl"],
 }
 
-    bootstrap_go_package {
-    name: "soong-lineage",
-    pkgPath: "lineage/soong/android",
-    srcs: [
-        "android/config.go",
-        "android/variable.go",
-    ],
-}
-
-bootstrap_go_package {
-    name: "soong-lineage-generator",
-    pkgPath: "lineage/soong/generator",
-    deps: [
-        "blueprint",
-        "blueprint-pathtools",
-        "soong",
-        "soong-android",
-        "soong-shared",
-    ],
-    srcs: [
-        "generator/generator.go",
-        "generator/variables.go",
-    ],
-    pluginFor: ["soong_build"],
-}
-
-lineage_generator {
+headers_generator {
     name: "generated_kernel_includes",
 
     // The headers make command

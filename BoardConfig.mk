@@ -89,7 +89,7 @@ BOARD_USES_PRODUCTIMAGE := true
 BOARD_ROOT_EXTRA_FOLDERS := bluetooth dsp firmware persist
 BOARD_SUPPRESS_SECURE_ERASE := true
 
-# Workaround for error copying vendor files to recovery ramdisk
+# Workaround for error copying important files to recovery ramdisk
 TARGET_COPY_OUT_ODM := odm
 TARGET_COPY_OUT_SYSTEM_EXT := system_ext
 TARGET_COPY_OUT_VENDOR := vendor
@@ -134,8 +134,7 @@ BOARD_KERNEL_CMDLINE += console=ttyMSM0,115200n8 \
         	androidboot.selinux=permissive \
         	androidboot.vbmeta.avb_version=1.0 \
         	androidboot.boot_devices=soc/1d84000.ufshc
-        
-BOARD_KERNEL_BINARIES := kernel
+
 TARGET_KERNEL_CLANG_COMPILE := true
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_BOOT_HEADER_VERSION := 3
@@ -181,7 +180,6 @@ TARGET_SCREEN_HEIGHT := 1600
 
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
-TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 
 # Display
 TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS := 0x546C00000000
@@ -208,7 +206,7 @@ TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_USES_MKE2FS := true
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
 # Allow LZ4 compression
-BOARD_RAMDISK_USE_LZ4 := true
+#BOARD_RAMDISK_USE_LZ4 := true
 
  # Landscape orientation:
 TW_THEME := portrait_hdpi
@@ -233,7 +231,7 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 BUILD_WITHOUT_VENDOR := false
 
 # Power 
-TARGET_USES_INTERACTION_BOOST := true
+#TARGET_USES_INTERACTION_BOOST := true
 
 # Hack: prevent anti rollback 
 # Crypto
@@ -265,4 +263,3 @@ TARGET_USES_LOGD := true
 TARGET_USES_MKE2FS := true
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_EXCLUDE_APEX := true
-TW_SUPPORT_INPUT_AIDL_HAPTICS := true

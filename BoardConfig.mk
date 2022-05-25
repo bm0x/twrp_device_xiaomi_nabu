@@ -181,6 +181,10 @@ TARGET_SCREEN_HEIGHT := 1600
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
+# HIDL
+DEVICE_MATRIX_FILE := $(DEVICE_PATH)/recovery/root/vendor/etc/compatibility_matrix.xml
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/recovery/root/vendor/etc/manifest.xml
+
 # Display
 TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS := 0x546C00000000
 TARGET_NO_RAW10_CUSTOM_FORMAT := true

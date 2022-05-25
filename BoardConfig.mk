@@ -229,7 +229,6 @@ PRODUCT_COPY_FILES += \
 
 TARGET_RECOVERY_INITRC := $(DEVICE_PATH)/recovery/rootdir/etc/init.recovery.qcom.rc
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
-DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
 
 BUILD_WITHOUT_VENDOR := false
 

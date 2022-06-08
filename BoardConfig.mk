@@ -170,8 +170,8 @@ TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilts/kernel
 BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilts/dtbo.img
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilts/dtb.img
 TARGET_FORCE_PREBUILT_KERNEL := true
-#PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/prebuilts/nabu-dtb.img:$(TARGET_COPY_OUT)/dtb.img
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/prebuilts/dtb.img:$(TARGET_COPY_OUT)/dtb.img
 
 ifeq ($(strip $(TARGET_PREBUILT_KERNEL)),)
 TARGET_KERNEL_SOURCE := kernel/xiaomi/nabu

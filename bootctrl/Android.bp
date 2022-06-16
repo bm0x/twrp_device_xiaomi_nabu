@@ -22,7 +22,7 @@ cc_library {
 
 cc_library_shared {
     name: "android.hardware.boot@1.2-impl-qti",
-    stem: "android.hardware.boot@1.2-impl-1.1-qti",
+    stem: "android.hardware.boot@1.2-impl-qti",
     defaults: ["android.hardware.boot@1.2-impl-qti_defaults"],
     static_libs: ["libgptutils.xiaomi_msmnile"],
 }

@@ -147,7 +147,8 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl \
-    android.hardware.health@2.1-service
+    android.hardware.health@2.1-service \
+    android.hardware.health@2.1-impl.recovery
 
 # HIDL
 PRODUCT_PACKAGES += \
@@ -202,18 +203,38 @@ PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service \
     android.hardware.memtrack-service.example \
-    vendor.qti.hardware.display.allocator-service \
-    vendor.qti.hardware.display.composer-service \
-    vendor.qti.hardware.display.mapper@1.0.vendor \
-    vendor.qti.hardware.display.mapper@1.1.vendor \
-    vendor.qti.hardware.display.mapper@2.0.vendor \
-    vendor.qti.hardware.display.mapper@3.0.vendor \
-    vendor.qti.hardware.display.mapper@4.0.vendor \
-    vendor.xiaomi.hardware.display@1.0.vendor
+    vendor.qti.hardware.display.allocator@1.0 \
+    vendor.qti.hardware.display.allocator@3.0 \
+    vendor.qti.hardware.display.allocator@4.0 \
+    vendor.qti.hardware.display.composer@1.0 \
+    vendor.qti.hardware.display.composer@2.0 \
+    vendor.qti.hardware.display.mapper@1.0 \
+    vendor.qti.hardware.display.mapper@1.1 \
+    vendor.qti.hardware.display.mapper@2.0 \
+    vendor.qti.hardware.display.mapper@3.0 \
+    vendor.qti.hardware.display.mapper@4.0 \
+    vendor.qti.hardware.qdutils_disp@1.0 \
+    vendor.qti.hardware.display.mapperextensions@1.0 \
+    vendor.qti.hardware.display.mapperextensions@1.1 \
+    vendor.display.postproc@1.0 \
+    vendor.qti.hardware.qdutils_disp@1.0 \
+    vendor.xiaomi.hardware.display@1.0 \
+    displayfeature.default \
+    vendor.xiaomi.hardware.displayfeature@1.0-impl \
+    vendor.xiaomi.hardware.displayfeature@1.0 \
+    vendor.xiaomi.hardware.displayfeature@1.0-service \
+    vendor.xiaomi.hardware.displayfeature@1.0-service.rc
 
 PRODUCT_PACKAGES += \
-    vendor.display.config@1.15.vendor \
-    vendor.display.config@2.0.vendor
+    vendor.display.config@1.10 \
+    vendor.display.config@1.11 \
+    vendor.display.config@2.0 \
+    vendor.display.color@1.0 \
+    vendor.display.color@1.1 \
+    vendor.display.color@1.2 \
+    vendor.display.color@1.3 \
+    vendor.display.color@1.4 \
+    vendor.display.color@1.5
 
 PRODUCT_PACKAGES += \
     libdisplayconfig.qti \
@@ -230,7 +251,23 @@ PRODUCT_PACKAGES += \
     memtrack.msmnile \
     vndservicemanager \
     hwcomposer.msmnile \
-    gralloc.msmnile
+    gralloc.msmnile \
+    gralloc.default \
+    a612_rgmu.bin \
+    a618_gmu.bin \
+    a630_gmu.bin \
+    a630_sqe.fw \
+    a640_gmu.bin \
+    a640_zap.b00 \
+    a640_zap.b01 \
+    a640_zap.b02 \
+    a640_zap.elf \
+    a640_zap.mdt
+    
+#DISPLAY CONFIGS
+PRODUCT_PACKAGES += \
+    qdcm_calib_data_xiaomi_36_02_0b_video_mode_dual_dsi_cphy_panel.xml \
+    qdcm_calib_data_xiaomi_42_02_0a_video_mode_dual_dsi_cphy_panel.xml
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/snapdragon_color_libs_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/snapdragon_color_libs_config.xml

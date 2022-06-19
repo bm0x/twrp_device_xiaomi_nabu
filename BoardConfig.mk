@@ -302,4 +302,4 @@ TW_SCREEN_BLANK_ON_BOOT := true
 TW_EXCLUDE_APEX := true
 
 # Inherit from the proprietary version
--include vendor/xiaomi/sm8250-common/BoardConfigVendor.mk
+-include vendor/xiaomi/nabu/BoardConfigVendor.mk

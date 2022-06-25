@@ -1,0 +1,19 @@
+service mishow_start /vendor/bin/sh /vendor/bin/mishow.sh 1
+       class main
+       user system
+       disabled
+       oneshot
+       seclabel u:r:vendor_qti_init_shell:s0
+
+service mishow_stop /vendor/bin/sh /vendor/bin/mishow.sh 0
+       class main
+       user system
+       disabled
+       oneshot
+       seclabel u:r:vendor_qti_init_shell:s0
+
+on property:vendor.charge.mishow.ctl=true
+       start mishow_start
+
+on property:vendor.charge.mishow.ctl=false
+       start mishow_stop

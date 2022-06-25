@@ -1,0 +1,5 @@
+service vendor.xiaomi.cit.bluetooth  /vendor/bin/hw/vendor.xiaomi.cit.bluetooth@1.0-service
+    class late_start
+    user root
+    group system
+    oneshot

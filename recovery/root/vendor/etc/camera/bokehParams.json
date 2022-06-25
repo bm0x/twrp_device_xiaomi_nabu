@@ -1,0 +1,20 @@
+{
+  "Bokeh_Params": {
+    "Param0": 5,
+    "Param1": 3,
+    "Param2": 5,
+    "Param3": 3,
+    "Param4": 5,
+    "Param5": 2,
+    "Param6": 2,
+    "Param7": 2,
+    "Param8": 0,
+    "Param9": 1,
+    "Param10": {
+      "Param10_0": 0,
+      "Param10_1": "../data/vendor/camera/",
+      "Param10_2": 100
+    }
+  }
+}
+

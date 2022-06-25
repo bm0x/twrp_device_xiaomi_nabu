@@ -1,0 +1,7 @@
+EISWidthMargin=0.25
+EISHeightMargin=0.4
+EISLDCGridEnabled=1
+EISv3GyroDumpEnabled=0
+EISv3OperationMode=0
+EISv2GyroDumpEnabled=0
+EISv2OperationMode=0

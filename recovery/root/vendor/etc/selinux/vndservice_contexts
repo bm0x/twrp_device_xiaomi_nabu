@@ -1,0 +1,8 @@
+manager                 u:object_r:service_manager_vndservice:s0
+*                       u:object_r:default_android_vndservice:s0
+display.qservice                        u:object_r:vendor_qdisplay_service:s0
+featenab_client.service                 u:object_r:vendor_qfeatenab_client_service:s0
+vendor.qcom.PeripheralManager           u:object_r:vendor_per_mgr_service:s0
+wfd.native.mm.service                          u:object_r:vendor_wfdnativemm_service:s0
+wfdhdcpvndservice                              u:object_r:vendor_wfdhdcpvndservice_service:s0
+android.IRemosaicDaemon                        u:object_r:remosaic_daemon_service:s0

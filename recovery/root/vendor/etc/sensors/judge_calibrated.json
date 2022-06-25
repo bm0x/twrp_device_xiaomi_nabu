@@ -1,0 +1,4 @@
+Acc lsm6dso_0_platform.accel.fac_cal.bias /vendor/etc/sensors/config/sm8150_lsm6dso_0.json 0 lsm6dso
+Gyr lsm6dso_0_platform.gyro.fac_cal.bias /vendor/etc/sensors/config/sm8150_lsm6dso_0.json 0 lsm6dso
+CCT_F_strm tcs3701_platform.channel.fac_cal /vendor/etc/sensors/config/sm8150_tcs3701.json 0 tcs3701
+Lux_B bu27030_back_0_platform.ambient_light.fac_cal /vendor/etc/sensors/config/sm8150_bu27030_0_back.json 0 rohm_bu27030_back

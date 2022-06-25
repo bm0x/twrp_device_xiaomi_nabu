@@ -1,0 +1,8 @@
+#line 1 "vendor/qcom/proprietary/dolby/vision/sepolicy/dolby/service_contexts"
+#DOLBY_START
+#com.dolby.DolbyVisionService              u:object_r:dsv_service:s0
+#DOLBY_END
+#line 1 "system/sepolicy/reqd_mask/service_contexts"
+# empty service_contexts file - this file is used to generate an empty
+# non-platform service_context for devices without any service_contexts
+# customizations.

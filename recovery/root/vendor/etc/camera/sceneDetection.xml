@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<sceneDetection>
+  <commonSetting>
+    <blockWidth>32</blockWidth>
+    <blockHeight>32</blockHeight>
+    <frameNumToSave>3</frameNumToSave>
+    <downsampleFactor>4</downsampleFactor>
+  </commonSetting>
+
+  <hdr>
+    <indoor_iso>800</indoor_iso>
+    <indoor_expoTime>60</indoor_expoTime>
+    <indoor_lowExpoRange>10</indoor_lowExpoRange>
+    <indoor_highExpoRange>8</indoor_highExpoRange>
+    <indoor_lowExpoRangeExtended>5</indoor_lowExpoRangeExtended>
+    <indoor_highExpoRangeExtended>5</indoor_highExpoRangeExtended>
+    <indoor_lowRatioThre>0.03</indoor_lowRatioThre>
+    <indoor_highRatioThre>0.03</indoor_highRatioThre>
+    <indoor_face_lowExpoRange>5</indoor_face_lowExpoRange>
+    <indoor_face_highExpoRange>8</indoor_face_highExpoRange>
+    <indoor_face_lowExpoRangeExtended>5</indoor_face_lowExpoRangeExtended>
+    <indoor_face_highExpoRangeExtended>5</indoor_face_highExpoRangeExtended>
+    <indoor_face_lowRatioThre>0.05</indoor_face_lowRatioThre>
+    <indoor_face_highRatioThre>0.05</indoor_face_highRatioThre>
+
+    <outdoor_iso>200</outdoor_iso>
+    <outdoor_expoTime>20</outdoor_expoTime>
+    <outdoor_minRevisedBrightness>418.939</outdoor_minRevisedBrightness>
+    <outdoor_lowExpoRange>10</outdoor_lowExpoRange>
+    <outdoor_highExpoRange>8</outdoor_highExpoRange>
+    <outdoor_lowExpoRangeExtended>5</outdoor_lowExpoRangeExtended>
+    <outdoor_highExpoRangeExtended>5</outdoor_highExpoRangeExtended>
+    <outdoor_lowRatioThre>0.03</outdoor_lowRatioThre>
+    <outdoor_highRatioThre>0.03</outdoor_highRatioThre>
+    <outdoor_face_lowExpoRange>5</outdoor_face_lowExpoRange>
+    <outdoor_face_highExpoRange>8</outdoor_face_highExpoRange>
+    <outdoor_face_lowExpoRangeExtended>5</outdoor_face_lowExpoRangeExtended>
+    <outdoor_face_highExpoRangeExtended>5</outdoor_face_highExpoRangeExtended>
+    <outdoor_face_lowRatioThre>0.05</outdoor_face_lowRatioThre>
+    <outdoor_face_highRatioThre>0.05</outdoor_face_highRatioThre>
+
+    <night_iso>100</night_iso>
+    <night_expoTime>10</night_expoTime>
+    <night_maxRevisedBrightness>3</night_maxRevisedBrightness>
+    <night_lowExpoRange>10</night_lowExpoRange>
+    <night_highExpoRange>8</night_highExpoRange>
+    <night_lowExpoRangeExtended>5</night_lowExpoRangeExtended>
+    <night_highExpoRangeExtended>5</night_highExpoRangeExtended>
+    <night_lowRatioThre>0.03</night_lowRatioThre>
+    <night_highRatioThre>0.03</night_highRatioThre>
+    <night_face_lowExpoRange>5</night_face_lowExpoRange>
+    <night_face_highExpoRange>8</night_face_highExpoRange>
+    <night_face_lowExpoRangeExtended>5</night_face_lowExpoRangeExtended>
+    <night_face_highExpoRangeExtended>5</night_face_highExpoRangeExtended>
+    <night_face_lowRatioThre>0.05</night_face_lowRatioThre>
+    <night_face_highRatioThre>0.05</night_face_highRatioThre>
+
+    <default_lowExpoRange>10</default_lowExpoRange>
+    <default_highExpoRange>8</default_highExpoRange>
+    <default_lowExpoRangeExtended>5</default_lowExpoRangeExtended>
+    <default_highExpoRangeExtended>5</default_highExpoRangeExtended>
+    <default_lowRatioThre>0.03</default_lowRatioThre>
+    <default_highRatioThre>0.03</default_highRatioThre>
+
+   <touch_lowExpoRange>10</touch_lowExpoRange>
+   <touch_highExpoRange>8</touch_highExpoRange>
+   <touch_lowExpoRangeExtended>5</touch_lowExpoRangeExtended>
+   <touch_highExpoRangeExtended>5</touch_highExpoRangeExtended>
+   <touch_lowRatioThre>0.03</touch_lowRatioThre>
+   <touch_highRatioThre>0.03</touch_highRatioThre>
+  </hdr>
+
+  <!--add by fengchaoyu for motion detection -->
+  <motion>
+        <motion_frameDiffThre>17.85</motion_frameDiffThre>
+        <motion_blockWidth>32</motion_blockWidth>
+        <motion_blockHeight>32</motion_blockHeight>
+        <motion_judgeMove>0.015</motion_judgeMove>
+        <motion_frameGap1>1</motion_frameGap1>
+        <motion_frameGap2>1</motion_frameGap2>
+        <motion_roiWidRate>1</motion_roiWidRate>
+        <motion_roiHeiRate>1</motion_roiHeiRate>
+        <motion_downsample>4</motion_downsample>
+        <motion_startIndex>7</motion_startIndex>
+        <motion_indoorExpoTime>40</motion_indoorExpoTime>
+
+        <motion_threStaGap>50.0</motion_threStaGap>
+        <motion_threEndGap>220.0</motion_threEndGap>
+        <motion_threFirStage>30.0</motion_threFirStage>
+        <motion_threSecStageK>0.2</motion_threSecStageK>
+        <motion_threThirStage>20.0</motion_threThirStage>
+
+        <motion_faceLeftXThre>40</motion_faceLeftXThre>
+        <motion_faceTopYThre>40</motion_faceTopYThre>
+        <motion_faceRollThre>20</motion_faceRollThre>
+        <motion_facePitchThre>20</motion_facePitchThre>
+        <motion_faceYawThre>30</motion_faceYawThre>
+        <motion_faceSizeThre>40</motion_faceSizeThre>
+  </motion>
+
+  <!--add by fengchaoyu for wideangle recommend-->
+  <wideangle>
+        <wideangle_horizontal>180</wideangle_horizontal>
+        <wideangle_horiThre>10</wideangle_horiThre>
+        <wideangle_vertical>270</wideangle_vertical>
+        <wideangle_vertiThre>10</wideangle_vertiThre>
+        <wideangle_minFaceNum>3</wideangle_minFaceNum>
+        <wideangle_faceDisRatio>2.0</wideangle_faceDisRatio>
+        <wideangle_faceSizeRatio>0.5</wideangle_faceSizeRatio>
+        <wideangle_edgeDisRatio>0.1</wideangle_edgeDisRatio>
+  </wideangle>
+
+  <!--add by gongqiang for nightView recommend-->
+  <nightview>
+        <nightview_lowthresh>50</nightview_lowthresh>
+        <nightview_highthresh>150</nightview_highthresh>
+        <nightview_lowratio>0.8</nightview_lowratio>
+        <nightview_highratio>0.3</nightview_highratio>
+  </nightview>
+
+  <dxo_nightview>
+        <dxo_nightview_light>10.0</dxo_nightview_light>
+        <dxo_nightview_mlight>80.0</dxo_nightview_mlight>
+        <dxo_nightview_iso>1000.0</dxo_nightview_iso>
+        <dxo_nightview_expo_time>20.0</dxo_nightview_expo_time>
+        <dxo_nightview_bright_thresh>240</dxo_nightview_bright_thresh>
+        <dxo_nightview_bright_ratio_thresh>0.008</dxo_nightview_bright_ratio_thresh>
+        <dxo_nightview_dark_thresh>50</dxo_nightview_dark_thresh>
+        <dxo_nightview_dark_ratio_thresh>0.3</dxo_nightview_dark_ratio_thresh>
+        <dxo_lux_index_thresh>310</dxo_lux_index_thresh>
+        <dxo_middle_low>80</dxo_middle_low>
+        <dxo_middle_high>200</dxo_middle_high>
+        <dxo_middle_ratio_thresh>0.4</dxo_middle_ratio_thresh>
+
+        <dxo_lux_index_thresh_face>330.0</dxo_lux_index_thresh_face>
+        <dxo_nightview_light_face>10.0</dxo_nightview_light_face>
+        <dxo_nightview_dark_ratio_thresh_face>0.18</dxo_nightview_dark_ratio_thresh_face>
+        <dxo_nightview_middle_ratio_thresh_face>0.5</dxo_nightview_middle_ratio_thresh_face>
+        <dxo_nightview_bright_ratio_thresh_face>0.008</dxo_nightview_bright_ratio_thresh_face>
+
+        <dxo_nightview_extreme_dark_lux>355.0</dxo_nightview_extreme_dark_lux>
+
+        <dxo_nightview_lux_index_margin>20</dxo_nightview_lux_index_margin>
+        <dxo_nightview_light_margin>2</dxo_nightview_light_margin>
+        <dxo_nightview_dark_margin>0.04</dxo_nightview_dark_margin>
+        <dxo_nightview_middle_margin>0.05</dxo_nightview_middle_margin>
+        <dxo_nightview_bright_margin>0</dxo_nightview_bright_margin>
+        <dxo_nightview_similar_threshold>0.85</dxo_nightview_similar_threshold>
+
+  </dxo_nightview>
+
+  <hdr_face>
+        <hdr_bright_thresh>240</hdr_bright_thresh>
+        <hdr_bright_ratio>0.008</hdr_bright_ratio>
+        <face_brightness_thresh>200</face_brightness_thresh>
+        <hdr_light_thresh>10</hdr_light_thresh>
+  </hdr_face>
+
+  <tripod_pattern>
+        <tripod_enter_threshold>0.016</tripod_enter_threshold>
+        <tripod_quit_threshold>0.6</tripod_quit_threshold>
+        <tripod_wait_frames>27</tripod_wait_frames>
+        <tripod_enter_frames>14</tripod_enter_frames>
+  </tripod_pattern>
+
+</sceneDetection>

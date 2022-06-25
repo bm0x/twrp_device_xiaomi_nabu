@@ -1,0 +1,2 @@
+on boot
+	chown system system /sys/bus/platform/drivers/xiaomi-keyboard/soc:xiaomi_keyboard/xiaomi_keyboard_conn_status

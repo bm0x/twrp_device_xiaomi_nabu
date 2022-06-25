@@ -1,0 +1,154 @@
+// @file sns_physical_sensor_oem_config.proto
+//
+// Defines config API message types for physical sensors.
+//
+// All physical Sensor drivers are required to use this API to support
+// self-test. SNS_PHYSICAL_SENSOR_TEST_TYPE_COM is a mandatory test type and must be
+// implemented in all physical Sensor drivers. Any new or device-specific
+// test type may be defined in the Sensor-specific API.
+//
+// Copyright (c) 2016-2017 Qualcomm Technologies, Inc.
+// All Rights Reserved.
+// Confidential and Proprietary - Qualcomm Technologies, Inc.
+
+syntax = "proto2";
+import "nanopb.proto";
+
+enum sns_physical_sensor_oem_config_msgid
+{
+  option (nanopb_enumopt).long_names = false;
+
+  // Test config request to a physical Sensor
+  SNS_PHYSICAL_SENSOR_OEM_CONFIG_MSGID_SNS_PHYSICAL_SENSOR_OEM_CONFIG = 2048;
+
+  // Test event message from a physical Sensor
+  SNS_PHYSICAL_SENSOR_OEM_CONFIG_MSGID_SNS_PHYSICAL_SENSOR_OEM_CONFIG_EVENT  = 2049;
+}
+
+// Supported test types for physical sensors
+enum sns_physical_sensor_oem_config_type
+{
+  option (nanopb_enumopt).long_names = false;
+
+  // set tp info for als parameter settings.
+  SNS_PHYSICAL_SENSOR_CONFIG_TYPE_COLOR = 0;
+
+  // Sensor Hardware test.
+  SNS_PHYSICAL_SENSOR_CONFIG_LUX_SCALE = 1;
+
+  // Factory test used for Sensor calibration.
+  SNS_PHYSICAL_SENSOR_CONFIG_PS_THRESHOLD = 2;
+
+  // Communication bus test.
+  SNS_PHYSICAL_SENSOR_CONFIG_PS_FORCE_CALI = 3;
+
+  // Communication bus test.
+  SNS_PHYSICAL_SENSOR_CONFIG_BIAS = 4;
+
+  // Communication bus test.
+  SNS_PHYSICAL_SENSOR_CONFIG_BACKLIGHT = 5;
+
+  // Communication dc state notify.
+  SNS_PHYSICAL_SENSOR_CONFIG_DC_STATE = 6;
+
+  // bme688 heat source information.
+  SNS_ENVIRONMENT_SENSOR_HEAT_SOURCE_INPUT_INFO = 7;
+
+  // bme688 press test information.
+  SNS_ENVIRONMENT_SENSOR_MISALIGNMENT_TEST_INPUT_INFO = 8;
+
+  // bme688 air test information.
+  SNS_ENVIRONMENT_SENSOR_BREATH_CHECK_INPUT_INFO = 9;
+
+  // ams_tcs3701 test information.
+  SNS_PHYSICAL_SENSOR_CONFIG_BRIGHTNESS_PARSE_REULT_RGB = 10;
+
+  SNS_PHYSICAL_SENSOR_CONFIG_HIGHLCD = 11;
+
+  SNS_PHYSICAL_SENSOR_CONFIG_LOWLCD = 12;
+
+  // Communication sensor channel calibration.
+  SNS_PHYSICAL_SENSOR_CONFIG_CHANNEL_CALI = 13;
+}
+
+// Supported device charge types for bme sensors
+enum sns_bme_sensor_device_charge_type
+{
+  option (nanopb_enumopt).long_names = false;
+
+  // set charge info for als parameter settings.
+  SNS_BME_SENSOR_CURRENT_STATE_CHARGE_TYPE_BATTERY = 0;
+  SNS_BME_SENSOR_CURRENT_STATE_CHARGE_TYPE_CHARGING = 1;
+
+}
+
+// Supported device screen types for bme sensors
+enum sns_bme_sensor_device_screen_type
+{
+  option (nanopb_enumopt).long_names = false;
+
+  // set charge info for als parameter settings.
+  SNS_BME_SENSOR_CURRENT_STATE_SCREEN_TYPE_LCD = 0;
+  SNS_BME_SENSOR_CURRENT_STATE_SCREEN_TYPE_LED = 1;
+}
+
+// Physical Sensor oem configuration request
+message sns_physical_sensor_oem_config
+{
+  // Requested config type.
+  required sns_physical_sensor_oem_config_type config_type = 1;
+  optional uint32 color = 2;
+  optional float lux_scale = 3;
+  optional uint32  threshold_near = 4;
+  optional uint32  threshold_far = 5;
+  optional float offset_x = 6;
+  optional float offset_y = 7;
+  optional float offset_z = 8;
+  optional int32 backlight = 9;
+  optional int32 dc_state = 10;
+  // for bme688
+  optional float  thermal = 11;
+  optional sns_bme_sensor_device_charge_type charge_type = 12;
+  optional float  battery_temp = 13;
+  optional float  battery_current = 14;
+  optional float  battery_voltage = 15;
+  optional sns_bme_sensor_device_screen_type screen_type = 16;
+  optional float  brightness = 17;
+  optional float parsed_lux = 18;
+  optional float parsed_r = 19;
+  optional float parsed_g = 20;
+  optional float parsed_b = 21;
+  repeated float f =22 [(nanopb).max_count = 20];
+}
+
+// Physical Sensor test event
+message sns_physical_sensor_oem_config_event
+{
+  // Result if the test execution was successful:
+  // true for success
+  // false for failure
+  required bool config_result = 1 [default = true];
+
+  // test_type from sns_physical_sensor_oem_config that
+  // this event corresponds to
+  required sns_physical_sensor_oem_config_type config_type = 2 [default = SNS_PHYSICAL_SENSOR_CONFIG_TYPE_COLOR];
+
+  // Driver specific test data. This field can be used
+  // to pass additional information like failure codes, debug data, etc.
+  optional int32 poffset1 = 3;
+  optional int32 poffset2 = 4;
+  optional int32 color = 5;
+}
+
+// Self-test and streaming concurrency requirements:
+// 1. If the sensor is streaming and there is a client request to run
+//    self-test (any test type) then the driver:
+//      a. Pauses the stream
+//      b. Executes the self-test request to completion
+//      c. Resumes stream
+// 2. If the self-test is running and there is a client request to start
+//    a sensor stream then the driver:
+//      a. Rejects the stream request
+//      b. Continues executing the self-test request to completion
+
+

@@ -1,0 +1,36 @@
+on post-fs-data
+	mkdir /data/vendor/mi_ic 2771 root log
+
+on property:sys.boot_completed=1
+	start mi_ric_init
+	start mi_ric_run
+
+#mi_ric service
+service mi_ric_init /vendor/bin/MI_RIC -i
+	class main
+	disabled
+	oneshot
+	seclabel u:r:mi_ric:s0
+
+service mi_ric_run /vendor/bin/MI_RIC -r
+	class main
+	disabled
+	seclabel u:r:mi_ric:s0
+
+service mi_ric_file /vendor/bin/MI_RIC -f
+	class main
+	disabled
+	oneshot
+	seclabel u:r:mi_ric:s0
+
+on property:vendor.mi_ric.is.valid=0
+	stop mi_ric_file
+
+
+on property:vendor.mi_ric.is.valid=1
+	start mi_ric_file
+	setprop vendor.mi_ric.is.valid 3
+
+on property:vendor.mi_ric.is.valid=2
+	rm /data/vendor/mi_ic/mi_ric.log
+	setprop vendor.mi_ric.is.valid 4

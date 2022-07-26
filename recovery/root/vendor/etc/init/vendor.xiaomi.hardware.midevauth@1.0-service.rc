@@ -1,4 +1,0 @@
-service vendor.midevauth /vendor/bin/midevauthd
-    class hal
-    user system
-    group system

@@ -1,8 +1,0 @@
-on fs
-    mkdir /mnt/vendor/persist/stability 0755 system system
-    mkdir /mnt/vendor/persist/misys 0755 system system
-
-service vendor.misys@2.0 /vendor/bin/hw/vendor.xiaomi.hardware.misys@2.0-service
-    class hal
-    user system
-    group system

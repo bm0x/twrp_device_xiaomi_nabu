@@ -52,6 +52,34 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a55
 
+# Kernel
+BOARD_KERNEL_CMDLINE := ttyMSM0,115200n8 earlycon=msm_geni_serial,0xa90000 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 androidboot.usbcontroller=a600000.dwc3 androidboot.selinux=permissive
+BOARD_KERNEL_IMAGE_NAME := Image
+BOARD_KERNEL_PAGESIZE := 4096
+BOARD_BOOT_HEADER_VERSION := 2
+BOARD_KERNEL_BASE          := 0x00000000
+BOARD_KERNEL_TAGS_OFFSET   := 0x00000100
+BOARD_KERNEL_OFFSET        := 0x00008000
+BOARD_KERNEL_SECOND_OFFSET := 0x00000000
+BOARD_RAMDISK_OFFSET       := 0x01000000
+BOARD_DTB_OFFSET           := 0x01f00000
+TARGET_KERNEL_ARCH := arm64
+BOARD_INCLUDE_RECOVERY_DTBO := true
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+BOARD_MKBOOTIMG_ARGS += --base $(BOARD_KERNEL_BASE)
+BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
+BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --kernel_offset $(BOARD_KERNEL_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --second_offset $(BOARD_KERNEL_SECOND_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
+
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilts/kernel
+BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilts/dtbo.img
+BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/prebuilts/dtbs
+
+
 # Assert
 TARGET_OTA_ASSERT_DEVICE := nabu
 
@@ -138,63 +166,6 @@ TARGET_ENABLE_MEDIADRM_64 := true
 BOARD_USES_METADATA_PARTITION := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
-
-#Kernel
-BOARD_KERNEL_CMDLINE += console=ttyMSM0,115200n8 \
-		androidboot.hardware=qcom \
-		androidboot.console=ttyMSM0 \
-		androidboot.memcg=1 \
-		lpm_levels.sleep_disabled=1 \
-		msm_rtb.filter=0x237 \
-		service_locator.enable=1 \
-		androidboot.usbcontroller=a600000.dwc3 \
-		swiotlb=2048 \
-		loop.max_part=7 \
-		cgroup.memory=nokmem,nosocket \
-		reboot=panic_warm \
-		androidboot.init_fatal_reboot_target=recovery \
-        	androidboot.selinux=permissive \
-        	androidboot.vbmeta.avb_version=2.0 \
-        	androidboot.boot_devices=soc/1d84000.ufshc
-
-TARGET_KERNEL_CLANG_COMPILE := true
-BOARD_KERNEL_IMAGE_NAME := Image
-BOARD_BOOT_HEADER_VERSION := 3
-BOARD_KERNEL_SEPARATED_DTBO := true
-BOARD_INCLUDE_RECOVERY_DTBO := true
-BOARD_INCLUDE_DTB_IN_BOOTIMG := true
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilts/kernel
-BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilts/dtbo.img
-TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilts/dtb.img
-TARGET_FORCE_PREBUILT_KERNEL := true
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/prebuilts/dtb.img:$(TARGET_COPY_OUT)/dtb.img
-
-ifeq ($(strip $(TARGET_PREBUILT_KERNEL)),)
-TARGET_KERNEL_SOURCE := kernel/xiaomi/nabu
-TARGET_KERNEL_CONFIG := nabu_user_defconfig
-endif
-
-BOARD_KERNEL_BASE          := 0x00000000
-BOARD_KERNEL_TAGS_OFFSET   := 0x00000100
-BOARD_KERNEL_OFFSET        := 0x00008000
-BOARD_KERNEL_SECOND_OFFSET := 0x00000000
-BOARD_RAMDISK_OFFSET       := 0x01000000
-BOARD_DTB_OFFSET           := 0x01f00000
-BOARD_VENDOR_BASE	   := 0x00000000
-BOARD_HEADER_SIZE	   := 2112
-BOARD_KERNEL_PAGESIZE := 4096
-TARGET_KERNEL_ARCH := arm64
-BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
-BOARD_MKBOOTIMG_ARGS += --base $(BOARD_KERNEL_BASE)
-BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
-BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --kernel_offset $(BOARD_KERNEL_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --second_offset $(BOARD_KERNEL_SECOND_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
-BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
-BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
 
 # 16:10 Screen
 TARGET_SCREEN_WIDTH := 2560

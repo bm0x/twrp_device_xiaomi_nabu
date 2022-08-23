@@ -54,21 +54,21 @@ TARGET_2ND_CPU_VARIANT := cortex-a55
 
 # Kernel
 BOARD_BOOTIMG_HEADER_VERSION := 3
-BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 loop.max_part=7 androidboot.usbcontroller=a600000.dwc3 buildvariant=user
+BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 loop.max_part=7 androidboot.usbcontroller=a600000.dwc3 buildvariant=user androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 BOARD_KERNEL_IMAGE_NAME := kernel
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_KERNEL_SEPARATED_DTBO := true
 TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_CONFIG := nabu_defconfig
-TARGET_KERNEL_SOURCE := kernel/xiaomi/nabu
+TARGET_KERNEL_CONFIG := nabu_user_defconfig
+TARGET_KERNEL_SOURCE := kernel/xiaomi/sm8150
 TARGET_KERNEL_CLANG_COMPILE := true
 
-# Kernel - prebuilt
-TARGET_FORCE_PREBUILT_KERNEL := true
-ifeq ($(TARGET_FORCE_PREBUILT_KERNEL),true)
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilts/kernel
+# Kernel - prebuilt // Stop using prebuilts kernel for now, compile kernel directly from source
+#TARGET_FORCE_PREBUILT_KERNEL := true
+#ifeq ($(TARGET_FORCE_PREBUILT_KERNEL),true)
+#TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilts/kernel
 #INSTALLED_DTBIMAGE_TARGET := $(DEVICE_PATH)/prebuilts/dtb.img
 #BOARD_MKBOOTIMG_ARGS += --dtb $(INSTALLED_DTBIMAGE_TARGET)
 #BOARD_INCLUDE_DTB_IN_BOOTIMG := true

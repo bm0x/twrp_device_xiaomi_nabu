@@ -16,5 +16,5 @@
 # limitations under the License.
 #
 
-add_lunch_combo omni_nabu-userdebug
-add_lunch_combo omni_nabu-eng
+export ALLOW_MISSING_DEPENDENCIES=true
+export LC_ALL=C

@@ -39,6 +39,11 @@ TARGET_2ND_CPU_VARIANT := cortex-a76
 # Assert
 TARGET_OTA_ASSERT_DEVICE := nabu
 
+# A/B
+AB_OTA_UPDATER := true
+TW_INCLUDE_REPACKTOOLS := true
+
+
 # File systems
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_SYSTEMIMAGE_PARTITION_TYPE := ext4
@@ -61,26 +66,30 @@ BOARD_XIAOMI_DYNAMIC_PARTITIONS_SIZE := 9122611200 # TODO: Fix hardcoded value
 BOARD_USES_SYSTEM_EXTIMAGE := true
 BOARD_USES_PRODUCTIMAGE := true
 
-# A/B
-AB_OTA_UPDATER := true
-TW_INCLUDE_REPACKTOOLS := true
-
 # Kernel
-BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 androidboot.selinux=permissive
+BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_IMAGE_NAME := Image
+BOARD_KERNEL_PAGESIZE := 4096
+
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+BOARD_KERNEL_SEPARATED_DTBO := true
+BOARD_BOOT_HEADER_VERSION := 3
+BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
+
+BOARD_KERNEL_CMDLINE += console=ttyMSM0,115200n8 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 androidboot.selinux=permissive
 BOARD_KERNEL_CMDLINE += lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048
 BOARD_KERNEL_CMDLINE += loop.max_part=7 androidboot.usbcontroller=a600000.dwc
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.gz-dtb
-BOARD_BOOTIMG_HEADER_VERSION := 3
-BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
-BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
-TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_SOURCE := kernel/xiaomi/nabu
-TARGET_KERNEL_CONFIG := nabu_user_defconfig
+
+KERNEL_LD := LD=ld.lld
+TARGET_KERNEL_ADDITIONAL_FLAGS := DTC_EXT=$(shell pwd)/prebuilts/misc/linux-x86/dtc/dtc
 TARGET_KERNEL_CLANG_COMPILE := true
-BOARD_KERNEL_SEPARATED_DTBO := true
-BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
-BOARD_KERNEL_SEPARATED_DTBO := true
+TARGET_KERNEL_CONFIG := nabu_user_defconfig
+TARGET_KERNEL_SOURCE := kernel/xiaomi/nabu
+NEED_KERNEL_MODULE_RECOVERY := true
+
+# Metadata
+BOARD_USES_METADATA_PARTITION := true
+BOARD_USES_QCOM_FBE_DECRYPTION := true
 
 # Bootloader
 PRODUCT_PLATFORM := msmnile
@@ -94,72 +103,17 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno640
 TARGET_USES_HARDWARE_QCOM_BOOTCTRL := true
 QCOM_BOARD_PLATFORMS += msmnile
 
-# Encryption
-PLATFORM_SECURITY_PATCH := 2099-12-31
-VENDOR_SECURITY_PATCH := 2099-12-31
-PLATFORM_VERSION := 16.1.0
-PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
-TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_CRYPTO_FBE := true
-TW_INCLUDE_FBE_METADATA_DECRYPT := true
-BOARD_USES_METADATA_PARTITION := true
-BOARD_USES_QCOM_FBE_DECRYPTION := true
+# Properties
+TARGET_ODM_PROP += $(DEVICE_PATH)/odm.prop
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 
 # Recovery
-BOARD_USES_RECOVERY_AS_BOOT := true
-BOARD_HAS_LARGE_FILESYSTEM := true
-BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_SUPPRESS_SECURE_ERASE := true
-TARGET_NO_RECOVERY := true
-TARGET_RECOVERY_DEVICE_MODULES += \
-    android.hidl.base@1.0 \
-    ashmemd \
-    ashmemd_aidl_interface-cpp \
-    libashmemd_client \
-    libcap \
-    libion \
-    libpcrecpp \
-    libxml2
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 
 # Use mke2fs to create ext4 images
 TARGET_USES_MKE2FS := true
-
-# TWRP specific build flags
-TARGET_RECOVERY_QCOM_RTC_FIX := true
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
-TW_THEME := portrait_hdpi
-TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
-TW_EXCLUDE_DEFAULT_USB_INIT := true
-TW_EXCLUDE_TWRPAPP := true
-TW_EXTRA_LANGUAGES := true
-TW_HAS_EDL_MODE := true
-TW_INCLUDE_NTFS_3G := true
-TW_NO_BIND_SYSTEM := true
-TW_NO_EXFAT_FUSE := true
-TW_EXCLUDE_DEFAULT_USB_INIT := true
-TW_NO_SCREEN_BLANK := true
-TARGET_USES_LOGD := true
-TWRP_INCLUDE_LOGCAT := true
-TARGET_RECOVERY_DEVICE_MODULES += debuggerd
-TW_RECOVERY_ADDITIONAL_RELINK_FILES += $(TARGET_OUT_EXECUTABLES)/debuggerd
-BOARD_PROVIDES_GPTUTILS := true
-TW_FRAMERATE := 60
-TW_INCLUDE_FASTBOOTD := true
-
-# TWRP recovery relink binary files
-TW_RECOVERY_ADDITIONAL_RELINK_BINARY_FILES += \
-    $(TARGET_OUT_EXECUTABLES)/ashmemd \
-    $(TARGET_OUT_EXECUTABLES)/strace
-TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/android.hidl.base@1.0.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/ashmemd_aidl_interface-cpp.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libashmemd_client.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libcap.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libpcrecpp.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libxml2.so
-
 
 # VINTF
 PRODUCT_ENFORCE_VINTF_MANIFEST := true

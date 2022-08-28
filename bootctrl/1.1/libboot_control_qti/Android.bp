@@ -1,0 +1,27 @@
+cc_library {
+    name: "libboot_control_qti",
+    vendor: true,
+    recovery_available: true,
+    shared_libs: [
+        "android.hardware.boot@1.1",
+        "librecovery_updater",
+        "libbase",
+        "libcutils",
+        "liblog",
+        "libz",
+    ],
+    static_libs: [
+        "libboot_control",
+        "libbootloader_message_vendor",
+        "libfstab",
+    ],
+    owner: "qti",
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+    srcs: [
+        "libboot_control_qti.cpp",
+    ],
+    export_include_dirs: ["."],
+}

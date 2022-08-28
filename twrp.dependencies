@@ -1,0 +1,8 @@
+[
+  {
+    "remote": "github",
+    "repository": "https://github.com/mvaisakh/nabu",
+    "target_path": "kernel/xiaomi/nabu",
+    "branch": "split-for-rebase"
+  }
+]

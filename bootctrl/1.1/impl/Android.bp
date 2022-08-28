@@ -1,0 +1,20 @@
+cc_library_shared {
+    name: "android.hardware.boot@1.1-impl-qti",
+    stem: "android.hardware.boot@1.0-impl-1.1-qti",
+    defaults: [
+        "hidl_defaults",
+    ],
+    relative_install_path: "hw",
+    vendor: true,
+    recovery_available: true,
+    srcs: ["BootControl.cpp"],
+    shared_libs: [
+        "liblog",
+        "libhidlbase",
+        "libhardware",
+        "libutils",
+        "android.hardware.boot@1.0",
+        "android.hardware.boot@1.1",
+        "libboot_control_qti",
+    ],
+}

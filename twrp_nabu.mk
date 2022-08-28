@@ -18,15 +18,19 @@
 
 PRODUCT_RELEASE_NAME := nabu
 
-# Inherit some common Omni stuff.
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+
+# Inherit from hardware-specific part of the product configuration
+$(call inherit-product, device/$(PRODUCT_BRAND)/$(PRODUCT_DEVICE)/device.mk)
+
+# Inherit some common TWRP stuff.
 $(call inherit-product, vendor/twrp/config/common.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := $(PRODUCT_RELEASE_NAME)
 PRODUCT_NAME := twrp_nabu
 PRODUCT_BRAND := Xiaomi
-PRODUCT_MODEL := 21051182C
+PRODUCT_MODEL := Xiaomi Pad 5
 PRODUCT_MANUFACTURER := xiaomi
-
-# Inherit from hardware-specific part of the product configuration
-$(call inherit-product, device/$(PRODUCT_BRAND)/$(PRODUCT_DEVICE)/device.mk)

@@ -42,7 +42,16 @@ TARGET_OTA_ASSERT_DEVICE := nabu
 # A/B
 AB_OTA_UPDATER := true
 TW_INCLUDE_REPACKTOOLS := true
-
+AB_OTA_PARTITIONS += \
+    boot \
+    dtbo \
+    product \
+    system \
+    system_ext \
+    vbmeta \
+    vbmeta_system \
+    vendor \
+    vendor_boot
 
 # File systems
 BOARD_HAS_LARGE_FILESYSTEM := true

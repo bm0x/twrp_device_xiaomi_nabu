@@ -30,6 +30,9 @@ LOCAL_PATH := device/xiaomi/nabu
 
 include kernel/xiaomi/nabu/Android.mk
 
+# Inherit the proprietary files
+$(call inherit-product, vendor/xiaomi/nabu/nabu-vendor.mk)
+
 # API
 PRODUCT_SHIPPING_API_LEVEL := 30
 
@@ -45,7 +48,7 @@ PRODUCT_PACKAGES += \
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.1-impl-qti.recovery \
+    android.hardware.boot@2.1-impl-qti.recovery \
     bootctrl.msmnile.recovery
 
 PRODUCT_PACKAGES_DEBUG += \
@@ -67,6 +70,7 @@ TARGET_SCREEN_WIDTH := 1600
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     hardware/xiaomi \
+    hardware/qcom-caf/bootctrl \
     vendor/qcom/opensource/commonsys-intf/display
 
 # Update engine

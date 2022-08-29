@@ -131,4 +131,4 @@ PRODUCT_ENFORCE_VINTF_MANIFEST := true
 BOARD_RAMDISK_USE_LZMA := true
 
 # Inherit from the proprietary version
--include vendor/xiaomi/nabu/BoardConfigVendor.mk
+#-include vendor/xiaomi/nabu/BoardConfigVendor.mk

@@ -31,7 +31,7 @@ LOCAL_PATH := device/xiaomi/nabu
 include kernel/xiaomi/nabu/Android.mk
 
 # Inherit the proprietary files
-$(call inherit-product, vendor/xiaomi/nabu/nabu-vendor.mk)
+#$(call inherit-product, vendor/xiaomi/nabu/nabu-vendor.mk)
 
 # API
 PRODUCT_SHIPPING_API_LEVEL := 30

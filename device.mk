@@ -48,7 +48,7 @@ PRODUCT_PACKAGES += \
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
-    android.hardware.boot@2.1-impl-qti.recovery \
+    android.hardware.boot@1.1-impl-qti.recovery \
     bootctrl.msmnile.recovery
 
 PRODUCT_PACKAGES_DEBUG += \

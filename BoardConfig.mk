@@ -75,6 +75,11 @@ BOARD_XIAOMI_DYNAMIC_PARTITIONS_SIZE := 9122611200 # TODO: Fix hardcoded value
 BOARD_USES_SYSTEM_EXTIMAGE := true
 BOARD_USES_PRODUCTIMAGE := true
 
+# System as root
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
+BOARD_ROOT_EXTRA_FOLDERS := bluetooth dsp firmware persist
+BOARD_SUPPRESS_SECURE_ERASE := true
+
 # Kernel
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_IMAGE_NAME := Image
@@ -119,6 +124,10 @@ TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
+PRODUCT_COPY_FILES += \
+	$(DEVICE_PATH)/recovery/root/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom
+
+TARGET_RECOVERY_INITRC := $(DEVICE_PATH)/recovery/root/init.recovery.qcom.rc
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 
 # Use mke2fs to create ext4 images
